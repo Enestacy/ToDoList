@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <link rel="stylesheet" href="nullstyle.css">
+    <link rel="stylesheet" href="todo-style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="list_body">
+        <div class="list_body_content">
+            <h1>ToDo</h1>
+            <div class="create_new_task">
+                <input type="text" class="create_new_task_body" placeholder = "I want to..." value="">
+                <button class="add_new_task_btn" type="button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 22V12M12 12V2M12 12H22M12 12H2" stroke="white" stroke-width="4" stroke-linecap="round"/>
+</svg>
+                </button>
+            </div>
+            <div class="filters">
+                <button class="filters_by_state active_filter" id="all">All</button>
+                <button class="filters_by_state" id="done">Done</button>
+                <button class="filters_by_state">Undone</button>
+                <div class="filters_by_date">
+                    <p id="sortbydate">Sort by date</p>
+                    <div class="arrows">
+                        <svg class = "active_arrow arrow" width="10" height="13" viewBox="0 0 10 13" fill="black" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 8.14034L5.61403 12.5263L4.38596 12.5263L-6.32936e-07 8.14034L1.22807 6.89473L4.12281 9.77192L4.1228 -9.60619e-06L5.87719 -9.75956e-06L5.87719 9.77192L8.77193 6.87718L10 8.14034Z"/>
+                        </svg>
+                        <svg class="arrow" width="10" height="13" viewBox="0 0 10 13" fill="black" xmlns="http://www.w3.org/2000/svg"
+                          >
+                          <path
+                            d="M0 4.38596L4.38597 0H5.61404L10 4.38596L8.77193 5.63158L5.87719 2.75439V12.5263H4.12281V2.75439L1.22807 5.64912L0 4.38596Z" />
+                        </svg>
+                            
+                    </div>
+                </div>
+            </div>
+
+            <ul class="tasks">
+               
+            </ul>
+
+            <ul id="pagination">
+                <li class="active_page">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+            </ul>
+        <button type="button" id="clean" class="cleanbtn">Clear list <svg class="cleanbtn_icon" width="15" height="16" viewBox="0 0 15 16" fill="#868686" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.7845 15.1557L13.7756 9.33844H14.1163C14.3904 9.33844 14.6113 9.11762 14.6113 8.84351V5.18869C14.6113 4.91458 14.3904 4.69377 14.1163 4.69377H9.43359V1.2293C9.43359 0.955187 9.21277 0.734375 8.93866 0.734375H5.89298C5.61887 0.734375 5.39805 0.955187 5.39805 1.2293V4.69377H0.715312C0.441201 4.69377 0.220388 4.91458 0.220388 5.18869V8.84351C0.220388 9.11762 0.441201 9.33844 0.715312 9.33844H1.05605L0.047165 15.1557C0.0414544 15.1842 0.0395508 15.2128 0.0395508 15.2395C0.0395508 15.5136 0.260363 15.7344 0.534475 15.7344H14.2972C14.3257 15.7344 14.3543 15.7325 14.3809 15.7268C14.6512 15.6811 14.8321 15.4241 14.7845 15.1557ZM1.55288 6.02625H6.73054V2.06686H8.1011V6.02625H13.2788V8.00595H1.55288V6.02625ZM10.4615 14.4019V11.4323C10.4615 11.3486 10.393 11.2801 10.3092 11.2801H9.39552C9.31176 11.2801 9.24323 11.3486 9.24323 11.4323V14.4019H5.58841V11.4323C5.58841 11.3486 5.51988 11.2801 5.43612 11.2801H4.52242C4.43866 11.2801 4.37013 11.3486 4.37013 11.4323V14.4019H1.53003L2.38854 9.45265H12.4412L13.2997 14.4019H10.4615Z"/>
+            </svg></button>
+        </div>
+    </div>
+    <script src="sweetalert2.min.js"></script>
+    <script src="todo-script.js" type="module"></script>
+</body>
+</html>
