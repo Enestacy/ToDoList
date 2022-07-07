@@ -75,11 +75,11 @@ arrows.forEach(function (arrow) {
 });
 
 addnewtask.onclick = createTask;
-// taskInput.addEventListener("keydown", function (key) {
-//   if (key.keyCode === 13) {
-//     createTask();
-//   }
-// });
+taskInput.addEventListener("keydown", function (key) {
+  if (key.keyCode === 13) {
+    createTask();
+  }
+});
 
 const renderTasks = (array) => {
   noTasks();
@@ -97,6 +97,15 @@ const renderTasks = (array) => {
   let start = (pageNum - 1) * notesOnPage;
   let end = start + notesOnPage;
   let notes = toRender.slice(start, end);
+
+  if (pageNum != 1 && !notes.length) {
+    pageNum = (pageNum - 1)
+    start = (pageNum - 1) * notesOnPage;
+
+    end = start + notesOnPage;
+    notes = toRender.slice(start, end);
+  }
+
   taskList.innerHTML = "";
   notes.map((item) => {
     taskList.innerHTML += item.main;
@@ -163,6 +172,22 @@ function renderBtn(arr) {
   });
 }
 
+function emptyTaskAlert() {
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'You can\'t add empty task',
+  })
+}
+
+function tasksLimit() {
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'You archive tasks\' limit.Delete some tasks to add new one',
+  })
+}
+
 function createTask() {
   const id = new Date().getTime();
   const newTask = {
@@ -191,11 +216,7 @@ function createTask() {
 
   if (taskInput.value === "" || taskInput.value.match(/^[ ]+$/)) {
     // alert("You can't add empty task");
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'You can\'t add empty task',
-    })
+    setTimeout(emptyTaskAlert, 300)
     return TASKS;
   }
   TASKS.push(newTask);
@@ -203,11 +224,7 @@ function createTask() {
   taskInput.value = "";
   if (TASKS.length > 25) {
     // alert("You archive tasks' limit. Delete some tasks to add new one");
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'You archive tasks\' limit.Delete some tasks to add new one',
-    })
+    setTimeout(tasksLimit, 250)
     return TASKS;
   }
 
@@ -223,11 +240,7 @@ function deleteTask() {
     close[i].onclick = function () {
       let task = close[i].parentElement.parentElement;
       task.remove();
-      for (let j = 0; j < TASKS.length; j++) {
-        if (i === j) {
-          TASKS.splice(i, 1);
-        }
-      }
+      TASKS = TASKS.filter(item => item.id !== +task.id)
       renderTasks(TASKS);
       renderBtn(TASKS);
       noTasks();
@@ -255,3 +268,4 @@ let congrats = () => {
     })
   }
 };
+
